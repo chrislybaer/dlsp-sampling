@@ -117,9 +117,6 @@ class LSP:
     def sample(self, s, freq_idxs):
         """F_inv is lower triangular, therefore to sample frequencies, we just take frequencies,
            maybe make argument s a function in the future"""
-        print('solving ...')
-        plt.imshow(self.F_inv[freq_idxs][:, freq_idxs])
-        plt.show()
         fourier_coefficients = np.linalg.solve(self.F_inv[freq_idxs][:, freq_idxs], s[freq_idxs])
         s_reconstructed = np.dot(self.F_inv[:, freq_idxs], fourier_coefficients)
         return s_reconstructed
@@ -132,7 +129,7 @@ class LSP:
         return s_reconstructed
 
     def reconstruction_plot(self, s, s_hat, n_steps=20):
-        indices = np.argsort(-np.abs(s_hat))
+        indices = np.argsort(-np.abs(s_hat)*np.linalg.norm(self.F_inv, axis=0))
         n_freqs = len(indices)//n_steps
         errs = []
         steps = []
@@ -171,9 +168,6 @@ class LatticeSignalProcessing:
     def sample(self, s, freq_idxs):
         """F_inv is lower triangular, therefore to sample frequencies, we just take frequencies,
            maybe make argument s a function in the future"""
-        print('solving ...')
-        plt.imshow(self.F_inv[freq_idxs][:, freq_idxs])
-        plt.show()
         fourier_coefficients = np.linalg.solve(self.F_inv[freq_idxs][:, freq_idxs], s[freq_idxs])
         s_reconstructed = np.dot(self.F_inv[:, freq_idxs], fourier_coefficients)
         return s_reconstructed
