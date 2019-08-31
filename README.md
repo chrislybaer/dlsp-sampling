@@ -17,7 +17,7 @@ utility of our novel sampling scheme in three real world settings from
 computational biology, document representation, and auction design.
 
 # Bibtex
-
+```bibtex
 @INPROCEEDINGS{Wend1911:Sampling,
 AUTHOR={Chris Wendler and Markus {P{\"u}schel}},
 TITLE="Sampling Signals on {Meet/Join} Lattices",
@@ -28,3 +28,4 @@ DAYS=11,
 MONTH=nov,
 YEAR=2019,
 }
+```
